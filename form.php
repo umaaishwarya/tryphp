@@ -23,16 +23,15 @@
     }
 
     // using sql to create a data entry query
-    $sql = "INSERT INTO example (id, fname, lname, email) VALUES ('0', '$fname', '$lname', '$email')";
+    $sql = "INSERT INTO example (fname, lname, email) VALUES ('$fname', '$lname', '$email')";
   
     // send query to the database to add values and confirm if successful
     $rs = mysqli_query($con, $sql);
     if($rs)
     {
-        echo "Entries added!";
+        echo "Entry added with ID: " . mysqli_insert_id($con);
     }
   
     // close connection
     mysqli_close($con);
-
 ?>
